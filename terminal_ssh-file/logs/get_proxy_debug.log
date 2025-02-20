@@ -1,0 +1,28 @@
+2025-01-09 05:02:07,393 INFO Script started.
+2025-01-09 05:02:07,393 INFO Script completed successfully.
+2025-01-09 05:02:07,398 DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-01-09 05:02:07,537 DEBUG https://raw.githubusercontent.com:443 "GET /officialputuid/KangProxy/refs/heads/KangProxy/socks5/socks5.txt HTTP/1.1" 200 17972
+2025-01-09 05:02:07,547 DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-01-09 05:02:07,849 DEBUG https://raw.githubusercontent.com:443 "GET /officialputuid/KangProxy/refs/heads/KangProxy/socks4/socks4.txt HTTP/1.1" 200 47978
+2025-01-09 05:02:07,883 DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-01-09 05:02:08,001 DEBUG https://raw.githubusercontent.com:443 "GET /officialputuid/KangProxy/refs/heads/KangProxy/http/http.txt HTTP/1.1" 200 16712
+2025-01-09 05:02:08,010 DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-01-09 05:02:08,132 DEBUG https://raw.githubusercontent.com:443 "GET /officialputuid/KangProxy/refs/heads/KangProxy/https/https.txt HTTP/1.1" 200 19553
+2025-02-20 23:31:29,313 INFO Logging system initialized successfully.
+2025-02-20 23:31:29,314 DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 23:31:29,412 DEBUG https://raw.githubusercontent.com:443 "GET /officialputuid/KangProxy/refs/heads/KangProxy/socks5/socks5.txt HTTP/1.1" 200 12117
+2025-02-20 23:31:29,415 DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 23:31:29,620 DEBUG https://raw.githubusercontent.com:443 "GET /officialputuid/KangProxy/refs/heads/KangProxy/socks4/socks4.txt HTTP/1.1" 200 43296
+2025-02-20 23:31:29,647 DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 23:31:29,735 DEBUG https://raw.githubusercontent.com:443 "GET /officialputuid/KangProxy/refs/heads/KangProxy/http/http.txt HTTP/1.1" 200 17140
+2025-02-20 23:31:29,739 DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 23:31:29,842 DEBUG https://raw.githubusercontent.com:443 "GET /officialputuid/KangProxy/refs/heads/KangProxy/https/https.txt HTTP/1.1" 200 22566
+2025-02-20 23:32:02,157 INFO Logging system initialized successfully.
+2025-02-20 23:32:02,158 DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 23:32:02,273 DEBUG https://raw.githubusercontent.com:443 "GET /officialputuid/KangProxy/refs/heads/KangProxy/socks5/socks5.txt HTTP/1.1" 200 12117
+2025-02-20 23:32:02,274 DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 23:32:02,369 DEBUG https://raw.githubusercontent.com:443 "GET /officialputuid/KangProxy/refs/heads/KangProxy/socks4/socks4.txt HTTP/1.1" 200 43296
+2025-02-20 23:32:02,396 DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 23:32:02,633 DEBUG https://raw.githubusercontent.com:443 "GET /officialputuid/KangProxy/refs/heads/KangProxy/http/http.txt HTTP/1.1" 200 17140
+2025-02-20 23:32:02,639 DEBUG Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2025-02-20 23:32:02,727 DEBUG https://raw.githubusercontent.com:443 "GET /officialputuid/KangProxy/refs/heads/KangProxy/https/https.txt HTTP/1.1" 200 22566

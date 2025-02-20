@@ -1,0 +1,87 @@
+/* Basic styling for admin pages */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input[type="text"],
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    display: inline-block;
+    border: none;
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #77a1d3;
+}
+
+.messages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.message-card {
+    border: 1px solid gray;
+    box-shadow: 1px 1px 3px #888;
+    padding: 20px;
+    margin: 10px 0;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.message-card h3 {
+    font-size: 1.5em;
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.message-card p {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.4em;
+}
+
+.message-card p small {
+    display: block;
+    margin-top: 10px;
+    color: #999;
+}

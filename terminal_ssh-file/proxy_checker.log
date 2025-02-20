@@ -1,0 +1,103 @@
+2025-01-07 18:27:20.746733: Processing file: http_proxies.txt
+2025-01-07 18:32:57.375507: Finished processing http_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_http_proxies.txt.
+2025-01-07 18:32:57.379008: Processing file: https_proxies.txt
+2025-01-07 18:40:56.373005: Finished processing https_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_https_proxies.txt.
+2025-01-07 18:40:56.387794: Processing file: socks5_proxies.txt
+2025-01-07 18:41:19.400527: Finished processing socks5_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks5_proxies.txt.
+2025-01-07 18:41:19.404871: Processing file: socks4_proxies.txt
+2025-01-07 18:42:29.394572: Finished processing socks4_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks4_proxies.txt.
+2025-01-07 19:12:41.530999: Processing file: http_proxies.txt
+2025-01-07 19:18:19.410883: Finished processing http_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_http_proxies.txt.
+2025-01-07 19:18:19.413883: Processing file: https_proxies.txt
+2025-01-07 19:26:15.671760: Finished processing https_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_https_proxies.txt.
+2025-01-07 19:26:15.677102: Processing file: socks5_proxies.txt
+2025-01-07 19:26:38.474938: Finished processing socks5_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks5_proxies.txt.
+2025-01-07 19:26:38.478926: Processing file: socks4_proxies.txt
+2025-01-07 19:27:45.586601: Finished processing socks4_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks4_proxies.txt.
+2025-01-07 19:41:19.947741: Processing file: http_proxies.txt
+2025-01-07 19:46:47.391272: Finished processing http_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_http_proxies.txt.
+2025-01-07 19:46:47.395308: Processing file: https_proxies.txt
+2025-01-07 19:54:09.198182: Finished processing https_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_https_proxies.txt.
+2025-01-07 19:54:09.205108: Processing file: socks5_proxies.txt
+2025-01-07 19:54:09.207915: No new proxies to check in socks5_proxies.txt.
+2025-01-07 19:54:09.208014: Processing file: socks4_proxies.txt
+2025-01-07 19:54:09.215515: No new proxies to check in socks4_proxies.txt.
+2025-01-07 22:37:28.394255: Processing file: http_proxies.txt
+2025-01-07 22:43:54.131880: Finished processing http_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_http_proxies.txt.
+2025-01-07 22:43:54.134558: Processing file: https_proxies.txt
+2025-01-07 22:51:41.083590: Finished processing https_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_https_proxies.txt.
+2025-01-07 22:51:41.090778: Processing file: socks5_proxies.txt
+2025-01-07 22:51:41.430593: Finished processing socks5_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks5_proxies.txt.
+2025-01-07 22:51:41.430929: Processing file: socks4_proxies.txt
+2025-01-07 22:51:56.100993: Finished processing socks4_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks4_proxies.txt.
+2025-01-08 02:21:35.998153: Processing file: http_proxies.txt
+2025-01-08 02:27:51.943320: Finished processing http_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_http_proxies.txt.
+2025-01-08 02:27:51.947458: Processing file: https_proxies.txt
+2025-01-08 02:35:32.092341: Finished processing https_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_https_proxies.txt.
+2025-01-08 02:35:32.097994: Processing file: socks5_proxies.txt
+2025-01-08 02:35:57.679853: Finished processing socks5_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks5_proxies.txt.
+2025-01-08 02:35:57.685301: Processing file: socks4_proxies.txt
+2025-01-08 02:37:07.376429: Finished processing socks4_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks4_proxies.txt.
+2025-01-08 16:26:48.125188: Processing file: http_proxies.txt
+2025-01-08 16:56:12.991233: Processing file: http_proxies.txt
+2025-01-08 17:02:56.248129: Processing file: http_proxies.txt
+2025-01-08 17:03:09.063557: Processing file: http_proxies.txt
+2025-01-08 17:03:31.184388: Processing file: http_proxies.txt
+2025-01-08 17:04:08.012191: Processing file: http_proxies.txt
+2025-01-08 17:16:54.484939: Processing file: http_proxies.txt
+2025-01-08 17:22:51.473455: Finished processing http_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_http_proxies.txt.
+2025-01-08 17:22:51.479692: Processing file: https_proxies.txt
+2025-01-08 17:29:45.285196: Finished processing https_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_https_proxies.txt.
+2025-01-08 17:29:45.295620: Processing file: socks5_proxies.txt
+2025-01-08 17:30:05.088461: Finished processing socks5_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks5_proxies.txt.
+2025-01-08 17:30:05.091872: Processing file: socks4_proxies.txt
+2025-01-08 17:30:26.212130: Finished processing socks4_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks4_proxies.txt.
+2025-01-08 17:43:06.125965: Processing file: http_proxies.txt
+2025-01-08 17:49:00.160887: Finished processing http_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_http_proxies.txt.
+2025-01-08 17:49:00.165830: Processing file: https_proxies.txt
+2025-01-08 17:55:49.451146: Finished processing https_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_https_proxies.txt.
+2025-01-08 17:55:49.457222: Processing file: socks5_proxies.txt
+2025-01-08 17:56:02.204913: Finished processing socks5_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks5_proxies.txt.
+2025-01-08 17:56:02.206898: Processing file: socks4_proxies.txt
+2025-01-08 17:57:02.828739: Finished processing socks4_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks4_proxies.txt.
+2025-01-08 19:00:04.124733: Processing file: http_proxies.txt
+2025-01-08 19:05:57.445429: Finished processing http_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_http_proxies.txt.
+2025-01-08 19:05:57.451053: Processing file: https_proxies.txt
+2025-01-08 19:12:52.028181: Finished processing https_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_https_proxies.txt.
+2025-01-08 19:12:52.034338: Processing file: socks5_proxies.txt
+2025-01-08 19:13:10.758297: Finished processing socks5_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks5_proxies.txt.
+2025-01-08 19:13:10.761772: Processing file: socks4_proxies.txt
+2025-01-08 19:13:31.317193: Finished processing socks4_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks4_proxies.txt.
+2025-01-08 22:00:05.199706: Processing file: http_proxies.txt
+2025-01-08 22:06:16.100544: Finished processing http_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_http_proxies.txt.
+2025-01-08 22:06:16.104226: Processing file: https_proxies.txt
+2025-01-08 22:13:21.821921: Finished processing https_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_https_proxies.txt.
+2025-01-08 22:13:21.827429: Processing file: socks5_proxies.txt
+2025-01-08 22:13:42.994821: Finished processing socks5_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks5_proxies.txt.
+2025-01-08 22:13:43.001292: Processing file: socks4_proxies.txt
+2025-01-08 22:14:47.381904: Finished processing socks4_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks4_proxies.txt.
+2025-01-09 01:00:05.457746: Processing file: http_proxies.txt
+2025-01-09 01:05:55.140407: Finished processing http_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_http_proxies.txt.
+2025-01-09 01:05:55.142858: Processing file: https_proxies.txt
+2025-01-09 01:13:01.991695: Finished processing https_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_https_proxies.txt.
+2025-01-09 01:13:01.996387: Processing file: socks5_proxies.txt
+2025-01-09 01:13:19.609770: Finished processing socks5_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks5_proxies.txt.
+2025-01-09 01:13:19.613231: Processing file: socks4_proxies.txt
+2025-01-09 01:13:34.566985: Finished processing socks4_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks4_proxies.txt.
+2025-01-09 05:03:12.332926: Processing file: https_proxies.txt
+2025-01-09 05:11:08.070905: Finished processing https_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_https_proxies.txt.
+2025-01-09 05:11:08.076784: Processing file: http_proxies.txt
+2025-01-09 05:17:12.315554: Finished processing http_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_http_proxies.txt.
+2025-01-09 05:17:12.320658: Processing file: socks5_proxies.txt
+2025-01-09 05:17:32.772098: Finished processing socks5_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks5_proxies.txt.
+2025-01-09 05:17:32.773712: Processing file: socks4_proxies.txt
+2025-01-09 05:18:29.110756: Finished processing socks4_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks4_proxies.txt.
+2025-01-09 05:22:08.857126: Processing file: https_proxies.txt
+2025-02-20 23:32:02.990686: Processing file: https_proxies.txt
+2025-02-20 23:38:46.221505: Finished processing https_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_https_proxies.txt.
+2025-02-20 23:38:46.223030: Processing file: http_proxies.txt
+2025-02-20 23:44:53.757325: Finished processing http_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_http_proxies.txt.
+2025-02-20 23:44:53.758901: Processing file: socks5_proxies.txt
+2025-02-20 23:45:05.364829: Finished processing socks5_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks5_proxies.txt.
+2025-02-20 23:45:05.365605: Processing file: socks4_proxies.txt
+2025-02-20 23:45:19.352355: Finished processing socks4_proxies.txt. Valid proxies saved to PROXY_CHECKED/checked_socks4_proxies.txt.

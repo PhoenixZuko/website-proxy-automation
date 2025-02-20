@@ -1,0 +1,7 @@
+[2025-02-20 23:32:01] Starting script execution
+[2025-02-20 23:32:01] Running script: get_proxy.py
+[2025-02-20 23:32:02] Script get_proxy.py completed successfully.
+[2025-02-20 23:32:02] Running script: check_proxy.py
+[2025-02-20 23:45:19] Script check_proxy.py completed successfully.
+[2025-02-20 23:45:19] Running script: json_vorte.py
+[2025-02-20 23:45:19] Script json_vorte.py failed. Check logs/json_vorte.py.log for details.

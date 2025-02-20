@@ -1,0 +1,281 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #007bff;
+    color: #2c2b2e;
+    line-height: 1.1;
+    background: linear-gradient(to right, #d4e0ed, #8e97a1);
+
+}
+.captcha-image {
+    margin-left: 10px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+    transition: color 0.3s, transform 0.2s;
+}
+.navbar a:hover {
+    color: #ffcc00;
+    transform: scale(1.1);
+}
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    background: linear-gradient(to right, #d4e0ed, #8e97a1);
+}
+.dynamic-panel {
+    width: 80%;
+    max-width: 900px;
+    background-color: #007bff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+.dynamic-panel h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #c4cec9;
+}
+.dynamic-panel p {
+    font-size: 16px;
+    color: #f7f7f7;
+}
+.dynamic-panel form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.dynamic-panel form input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 42%;
+    transition: border-color 0.3s;
+}
+.dynamic-panel form input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+.dynamic-panel form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.dynamic-panel form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+table {
+    width: calc(75% - 200px); /* Dimensiune completă minus 15px pe fiecare parte */
+    margin: 30px auto; /* Centrat pe orizontală și cu spațiu sus și jos */
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 14px; /* Setează dimensiunea generală a textului pentru tabel */
+    border-collapse: collapse; /* Elimină spațiile dintre celule */
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 5px solid #d4e0ed;
+    font-size: 12px; /* Dimensiune specifică pentru header și celule */
+    border-collapse: collapse; /* Elimină spațiile dintre celule */
+}
+th {
+    background-color: #007bff;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tr:hover {
+    background-color: #f1f1f1;
+}
+footer {
+    background-color: #3494f3;
+    color: #333;
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    margin-top: 30px;
+}
+footer p {
+    font-size: 14px;
+}
+footer strong {
+    color: #007bff;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.inline-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Distanța dintre câmpuri */
+    margin-top: 20px;
+}
+
+.inline-form input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    flex: 1; /* Câmpurile ocupă aceeași dimensiune */
+}
+
+.inline-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.inline-form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+    /* Stiluri doar pentru formularul de login */
+    #login-form .form-row input {
+        width: calc(50% - 10px); /* Împarte spațiul uniform între câmpuri */
+        padding: 12px; /* Ajustează spațiul intern */
+        font-size: 16px; /* Text vizibil */
+        margin-bottom: 10px; /* Spațiere între câmpuri */
+        border: 1px solid #ddd; /* Linie subțire */
+        border-radius: 5px; /* Colțuri rotunjite */
+    }
+
+    #login-form .form-row img.captcha-image {
+        height: 50px; /* Dimensiunea imaginii CAPTCHA */
+        margin-right: 10px; /* Spațiu între CAPTCHA și câmpul de text */
+        border-radius: 5px; /* Colțuri rotunjite pentru imagine */
+    }
+
+    #login-form button {
+        width: 100%; /* Butonul să ocupe toată lățimea */
+        padding: 12px; /* Spațiu intern */
+        font-size: 16px; /* Dimensiune text */
+        background-color: #007bff; /* Fundal albastru */
+        color: white; /* Text alb */
+        border: none; /* Fără contur */
+        cursor: pointer; /* Pointer mouse */
+        border-radius: 5px; /* Colțuri rotunjite */
+        transition: background-color 0.3s ease; /* Efect de hover */
+    }
+
+    #login-form button:hover {
+        background-color: #0056b3; /* Schimbare culoare pe hover */
+    }
+
+    /* Aliniere orizontală pentru CAPTCHA și câmp */
+    #login-form .form-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px; /* Spațiu între elemente */
+    }
+
+
+
+    /* Stiluri doar pentru formularul de login */
+    .login-panel .form-row input {
+        width: calc(50% - 10px); /* Împarte spațiul uniform între câmpuri */
+        padding: 12px; /* Ajustează spațiul intern */
+        font-size: 16px; /* Text clar și vizibil */
+        margin-bottom: 10px; /* Spațiere între câmpuri */
+        border: 1px solid #ddd; /* Linie subțire */
+        border-radius: 5px; /* Colțuri rotunjite */
+    }
+
+    .login-panel .form-row img.captcha-image {
+        height: 50px; /* Dimensiunea imaginii CAPTCHA */
+        margin-right: 10px; /* Spațiu între CAPTCHA și câmpul de text */
+        border-radius: 5px; /* Colțuri rotunjite pentru imagine */
+    }
+
+    .login-panel button {
+        width: 15%; /* Butonul să ocupe toată lățimea */
+        padding: 12px; /* Spațiu intern */
+        font-size: 16px; /* Dimensiune text */
+        background-color: #007bff; /* Fundal albastru */
+        color: white; /* Text alb */
+        border: none; /* Fără contur */
+        cursor: pointer; /* Pointer mouse */
+        border-radius: 5px; /* Colțuri rotunjite */
+        transition: background-color 0.3s ease; /* Efect de hover */
+    }
+
+    .login-panel button:hover {
+        background-color: #0056b3; /* Schimbare culoare pe hover */
+    }
+
+    /* Aliniere pentru CAPTCHA și câmp */
+    .login-panel .form-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px; /* Spațiu între elemente */
+    }
+    
+    
+    .documentation-panel {
+    margin-top: 23px;
+    text-align: center;
+}
+
+.documentation-panel .btn {
+    /* Aici rămân stilurile existente */
+}
+
+    

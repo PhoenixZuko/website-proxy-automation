@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentație Proiect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #007bff;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .note {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-left: 4px solid #007bff;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="border-left: 4px solid #ff4d4d; background-color: #fff5f5; padding: 10px; margin: 20px 0;">
+    <h2 style="color: #ff4d4d; margin-top: 0;">Stadiul Actual al Proiectului</h2>
+    <p style="color: #333;">
+        <strong>Notă:</strong> Proiectul este în prezent parțial funcțional. În această etapă, utilizatorii pot să își creeze un cont sau să se conecteze utilizând următoarele credențiale de test:
+    </p>
+    <ul style="margin-left: 20px; color: #333;">
+        <li><strong>Utilizator:</strong> test</li>
+        <li><strong>Parolă:</strong> 1</li>
+    </ul>
+    <p style="color: #333;">
+        Dezvoltarea este în desfășurare, iar noi funcționalități sunt adăugate activ pentru a îmbunătăți platforma.
+    </p>
+</div>
+
+        <h1>Descrierea Proiectului</h1>
+        <p><strong>Automatizare prin Cron Jobs, Scripturi Python și Baza de Date MMDB</strong></p>
+        <p>Acest proiect prezintă o soluție complet automatizată pentru gestionarea și verificarea listei de proxy-uri, utilizând:</p>
+        <ul>
+            <li>Cron Jobs pentru rularea periodică a proceselor</li>
+            <li>Scripturi Python pentru descărcarea, verificarea și procesarea proxy-urilor</li>
+            <li>Autentificare SSH bazată pe chei publice și private pentru transfer securizat</li>
+            <li>Baza de date MMDB pentru identificarea metadatelor (țară, oraș, ASN)</li>
+        </ul>
+
+        <h2>Fluxul Automatizat al Proiectului</h2>
+
+        <h3>1. Inițierea prin Cron Jobs</h3>
+        <p><strong>Frecvență:</strong> La fiecare 3 ore, un Cron Job configurat în cPanel execută următoarea comandă SSH:</p>
+        <pre><code>ssh root@87.120.114.174 "python3 /root/Bubu/main.py"</code></pre>
+        <p><strong>Autentificare:</strong> Logarea la server se realizează prin autentificare SSH bazată pe chei publice și private, eliminând necesitatea parolelor.</p>
+
+        <h3>2. Scriptul Principal – main.py</h3>
+        <p>Acest script coordonează execuția următoarelor etape, fiecare având un timp de rulare configurat:</p>
+        <ul>
+            <li><code>get_proxy.py</code> – 5 minute</li>
+            <li><code>check_proxy.py</code> – 30 minute</li>
+            <li><code>json_vorte.py</code> – 5 minute</li>
+            <li><code>transfer_proxy.py</code> – 5 minute</li>
+        </ul>
+
+        <h3>3. Etapele Procesului</h3>
+        <h4>a. <code>get_proxy.py</code> – Descărcarea Listei de Proxy-uri</h4>
+        <p>Acest script descarcă liste de proxy-uri din surse publice:</p>
+        <ul>
+            <li>SOCKS5: <a href="https://raw.githubusercontent.com/.../socks5.txt">socks5.txt</a></li>
+            <li>SOCKS4: <a href="https://raw.githubusercontent.com/.../socks4.txt">socks4.txt</a></li>
+            <li>HTTP: <a href="https://raw.githubusercontent.com/.../http.txt">http.txt</a></li>
+            <li>HTTPS: <a href="https://raw.githubusercontent.com/.../https.txt">https.txt</a></li>
+        </ul>
+
+        <h4>b. <code>check_proxy.py</code> – Verificarea Validității Proxy-urilor</h4>
+        <p>Validează fiecare proxy descărcat pentru a verifica funcționalitatea. Timp de rulare: 30 minute.</p>
+
+        <h4>c. <code>json_vorte.py</code> – Procesarea și Enrișarea Datelor</h4>
+        <p>Adaugă metadate pentru fiecare IP utilizând baza de date MMDB și un fișier suplimentar (ASN-INFO.txt). Formatul rezultatului:</p>
+        <pre><code>{
+    "type": "SOCKS5",
+    "country": "South Korea",
+    "city": "Seoul",
+    "ip": "8.213.129.15",
+    "port": "9992",
+    "asn": "45102",
+    "organization": "Alibaba US Technology"
+}</code></pre>
+
+        <h4>d. <code>transfer_proxy.py</code> – Transferul Datelor Procesate</h4>
+        <p>Transferă fișierul JSON generat către serverul cPanel, unde este integrat în baza de date SQL a site-ului.</p>
+
+        <h2>Procesul pe cPanel</h2>
+
+        <h3>1. Importul Datelor din JSON în SQL</h3>
+        <p>Comandă Cron Job utilizată:</p>
+        <pre><code>curl -s https://vorte.eu/vorte.eu/proxies/cached_proxies/cached_proxies.php > /dev/null</code></pre>
+        <p>Scriptul <code>cached_proxies.php</code> importă datele din JSON în tabelul <code>proxies</code>, având următoarea structură:</p>
+        <ul>
+            <li><code>id</code>: int</li>
+            <li><code>type</code>: varchar</li>
+            <li><code>country</code>: varchar</li>
+            <li><code>city</code>: varchar</li>
+            <li><code>ip</code>: varchar</li>
+            <li><code>port</code>: int</li>
+            <li><code>asn</code>: varchar</li>
+            <li><code>organization</code>: varchar</li>
+            <li><code>date_added</code>: timestamp</li>
+        </ul>
+
+        <h3>2. Distribuirea Proxy-urilor Random</h3>
+        <p>Comandă Cron Job utilizată:</p>
+        <pre><code>curl -s https://vorte.eu/proxies/update_proxies.php > /dev/null</code></pre>
+        <p>Acest script selectează și salvează 40 de proxy-uri random într-un tabel separat (<code>cached_proxies</code>), afișate gratuit pe site.</p>
+
+        <h2>Funcționalitatea Extinsă pentru Utilizatori Logați</h2>
+        <p>Utilizatorii autentificați beneficiază de:</p>
+        <ul>
+            <li>Acces la toate proxy-urile din baza de date</li>
+            <li>Filtrare avansată după tip, țară, oraș, ASN sau organizație</li>
+            <li>Posibilitatea de a descărca gratuit 30 de proxy-uri la fiecare 24 de ore</li>
+        </ul>
+
+        <h3>Procesul pentru Utilizatori Logați</h3>
+        <p>Utilizatorii pot selecta proxy-urile dorite, le pot adăuga într-un coș și le pot descărca printr-un singur clic, acestea devenind disponibile integral în secțiunea "My Proxy List".</p>
+    </div>
+</body>
+</html>

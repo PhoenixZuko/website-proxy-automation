@@ -1,0 +1,112 @@
+body {
+    background: #221E1E;
+    color: #000;
+    font-family: 'Roboto Mono', sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0 auto;
+    text-align: center;
+    width: 400px;
+    padding-top: 100px;
+}
+
+#register, #login, #forgot_password {
+    background: #F8F8F8;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, .1);
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+#register_header, #login_header, #forgot_password_header {
+    color: #b4b4b4;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    position: relative;
+    text-align: center;
+}
+
+.input-group .tip {
+    background: #F0F0F0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #000;
+    padding: 14px 15px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.input-group .tip::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: lowercase;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.captcha-group {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.captcha-group .captcha-image {
+    display: block;
+    margin: 10px auto 0;
+    width: 80px;
+    height: auto;
+    transform: scale(1.4);
+}
+
+button {
+    background: #2196F3;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 14px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #1976D2;
+}
+
+.error, .success {
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: left;
+}
+
+.error {
+    background: #F2DEDE;
+    color: #A94442;
+    border: 1px solid #EBCBCC;
+    border-radius: 3px;
+}
+
+.success {
+    background: #DFF0D8;
+    color: #3C763D;
+    border: 1px solid #D6E9C6;
+    border-radius: 3px;
+}
+
+#login_link, #register_link, #forgot_password_link {
+    border-bottom: 0px dashed;
+    color: #2196F3;
+    display: block;
+    margin-top: 20px;
+}

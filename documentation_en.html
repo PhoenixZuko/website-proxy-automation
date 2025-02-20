@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Documentation</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Project Overview – Automation Using Cron Jobs, Python Scripts, and MMDB</h1>
+        </header>
+
+        <section>
+<div style="border-left: 4px solid #ff4d4d; background-color: #fff5f5; padding: 10px; margin: 20px 0;">
+    <h2 style="color: #ff4d4d; margin-top: 0;">Current Project Status</h2>
+    <p style="color: #333;">
+        <strong>Note:</strong> The project is currently partially functional. At this stage, users can register an account or log in using the following test credentials:
+    </p>
+    <ul style="margin-left: 20px; color: #333;">
+        <li><strong>Username:</strong> test</li>
+        <li><strong>Password:</strong> 1</li>
+    </ul>
+    <p style="color: #333;">
+        Development is ongoing, and new functionalities are actively being added to enhance the platform.
+    </p>
+</div>
+
+            <h2>Introduction</h2>
+            <p>This project describes an automated solution for managing and validating proxy lists. It uses Cron Jobs, Python scripts, public-private key-based SSH authentication, and the MMDB (MaxMind Database) for geolocation data. The goal is to demonstrate a fully automated process for downloading, validating, and processing proxy data, then storing it in a database.</p>
+        </section>
+
+        <section>
+            <h2>Automated Workflow</h2>
+            <h3>1. Initiation via Cron Jobs</h3>
+            <ul>
+                <li><strong>Frequency:</strong> Every 3 hours, a Cron Job runs a command to start the process.</li>
+                <li><strong>Command:</strong> <code>ssh root@87.120.114.174 "python3 /root/Bubu/main.py"</code></li>
+                <li><strong>Authentication:</strong> The server connection uses SSH Key Authentication for a secure, password-free login.</li>
+            </ul>
+
+            <h3>2. The Main Script – <code>main.py</code></h3>
+            <p>The <code>main.py</code> script orchestrates the execution of other scripts, ensuring each has enough time to complete:</p>
+            <ul>
+                <li><code>get_proxy.py</code> – 300 seconds (5 minutes)</li>
+                <li><code>check_proxy.py</code> – 1800 seconds (30 minutes)</li>
+                <li><code>json_vorte.py</code> – 300 seconds (5 minutes)</li>
+                <li><code>transfer_proxy.py</code> – 300 seconds (5 minutes)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Process Details</h2>
+
+            <h3>1. <code>get_proxy.py</code> – Downloading Proxy Lists</h3>
+            <p>Downloads proxy lists from public sources and saves them locally.</p>
+            <ul>
+                <li>SOCKS5: <a href="#">source_link</a></li>
+                <li>SOCKS4: <a href="#">source_link</a></li>
+                <li>HTTP: <a href="#">source_link</a></li>
+                <li>HTTPS: <a href="#">source_link</a></li>
+            </ul>
+
+            <h3>2. <code>check_proxy.py</code> – Validating Proxies</h3>
+            <p>Verifies the functionality of downloaded proxies. While designed for demonstration, the script ensures enough proxies are functional for testing purposes.</p>
+
+            <h3>3. <code>json_vorte.py</code> – Processing and Enriching Data</h3>
+            <p>Adds metadata to each proxy using:</p>
+            <ul>
+                <li>The MMDB (MaxMind Database) for geolocation (country, city, ASN).</li>
+                <li>Supplementary file <code>ASN-INFO.txt</code> for organization names.</li>
+            </ul>
+            <p>Output is saved in a JSON format:</p>
+            <pre>{
+  "type": "SOCKS5",
+  "country": "South Korea",
+  "city": "Seoul",
+  "ip": "8.213.129.15",
+  "port": "9992",
+  "asn": "45102",
+  "organization": "Alibaba US Technology"
+}</pre>
+
+            <h3>4. <code>transfer_proxy.py</code> – Data Transfer</h3>
+            <p>Transfers the generated JSON file to the cPanel server, where it is integrated into the SQL database.</p>
+            <ul>
+                <li><strong>Authentication:</strong> Secure SSH connection using key pairs.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>cPanel Workflow</h2>
+
+            <h3>1. Importing Data</h3>
+            <ul>
+                <li><strong>Cron Job Command:</strong> <code>curl -s https://vorte.eu/proxies/cached_proxies.php > /dev/null</code></li>
+                <li><strong>Function:</strong> Reads the JSON file and imports data into the SQL table <code>proxies</code>.</li>
+            </ul>
+
+            <h3>2. Random Proxy Display</h3>
+            <ul>
+                <li><strong>Cron Job Command:</strong> <code>curl -s https://vorte.eu/proxies/update_proxies.php > /dev/null</code></li>
+                <li><strong>Function:</strong> Selects 40 random proxies hourly and stores them in the <code>cached_proxies</code> table for display.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Features for Registered Users</h2>
+            <ul>
+                <li>View the complete list of proxies with advanced filtering options (type, country, city, ASN, organization).</li>
+                <li>Select and download up to 30 proxies daily for free.</li>
+                <li>Use the shopping cart functionality to manage and download selected proxies.</li>
+                <li>Access "My Proxy List" to view downloaded proxies without masked IPs.</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Vorte.eu. All rights reserved.</p>
+        </footer>
+    </div>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #007bff;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .note {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-left: 4px solid #007bff;
+            margin-bottom: 20px;
+        }
+    </style>    
+</body>
+</html>
