@@ -1,58 +1,59 @@
-# Vorte Proxies - Platforma Automatizata pentru Validarea Proxy-urilor
+# Vorte Proxies - Automated Proxy Validation Platform
 
-**Vorte Proxies** este un proiect inovator care automatizeaza procesul de gestionare si validare a listelor de proxy. Folosind **Python, Cron Jobs, SSH, si baze de date SQL**, platforma permite utilizatorilor sa acceseze proxy-uri verificate si sa beneficieze de functionalitati avansate pentru administrare.
+Vorte Proxies is an innovative project that automates the management and validation of proxy lists. Using Python, Cron Jobs, SSH, and SQL databases, the platform allows users to access verified proxies and benefit from advanced administrative features.
 
- **Proiect disponibil live:** [Vorte Proxies](https://vorte.eu/vorte.eu/proxies/)
-
----
-
-## ** Statusul Curent al Proiectului**
-
- **Partial functional** – Utilizatorii pot deja sa isi creeze conturi si sa se autentifice cu urmatoarele credentiale de test:
-   - **Username:** test
-   - **Parola:** 1  
- **Dezvoltarea este in curs** – Se adauga constant noi functionalitati pentru imbunatatirea platformei.
+Live project: Vorte Proxies
 
 ---
 
-## ** Fluxul Automatizat de Procesare**
-
-### **1️ Initiere prin Cron Jobs**
--  **Frecventa:** La fiecare **3 ore**, un **Cron Job** porneste procesul.
--  **Comanda executata:**
-  ```sh
-  ssh root@87.120.114.174 "python3 /root/Bubu/main.py"
-  ```
--  **Autentificare securizata:** Foloseste **SSH Key Authentication** pentru conectare fara parola.
-
-### **2️ Scriptul Principal – main.py**
-- Acesta orchestreaza executia altor scripturi, asigurandu-se ca fiecare are suficient timp sa finalizeze:
-  - `get_proxy.py` – **300 secunde (5 min)**
-  - `check_proxy.py` – **1800 secunde (30 min)**
-  - `json_vorte.py` – **300 secunde (5 min)**
-  - `transfer_proxy.py` – **300 secunde (5 min)**
+## **Current Project Status**
+- **Partially functional** – Users can already create accounts and log in using the following test credentials:
+  
+  **Username:** test  
+  **Password:** 1  
+- Development is ongoing – New features are being added constantly to improve the platform.
 
 ---
 
-## ** Procesul de Validare a Proxy-urilor**
+## **Automated Processing Workflow**
 
-### **1️ get_proxy.py – Descarcarea listelor de proxy**
--  Obtine liste din surse publice si le salveaza local.
--  **Tipuri de proxy descarcate:**
+### **1. Initiation via Cron Jobs**
+- **Frequency:** Every 3 hours, a Cron Job starts the process.
+- **Executed command:**
+   ```sh
+   ssh root@87.120.114.174 "python3 /root/Bubu/main.py"
+   ```
+- **Secure authentication:** Uses SSH Key Authentication for password-less login.
+
+### **2. Main Script – main.py**
+This script orchestrates the execution of other scripts, ensuring each has enough time to complete:
+
+- **get_proxy.py** – 300 seconds (5 min)
+- **check_proxy.py** – 1800 seconds (30 min)
+- **json_vorte.py** – 300 seconds (5 min)
+- **transfer_proxy.py** – 300 seconds (5 min)
+
+---
+
+## **Proxy Validation Process**
+
+### **1. get_proxy.py – Downloading Proxy Lists**
+- Retrieves lists from public sources and saves them locally.
+- Types of downloaded proxies:
   - SOCKS5
   - SOCKS4
   - HTTP
   - HTTPS
 
-### **2️ check_proxy.py – Validarea proxy-urilor**
--  Verifica functionalitatea proxy-urilor descarcate.
--  Asigura ca exista un numar suficient de proxy-uri valabile pentru teste.
+### **2. check_proxy.py – Proxy Validation**
+- Verifies the functionality of the downloaded proxies.
+- Ensures there are enough valid proxies available for testing.
 
-### **3️ json_vorte.py – Procesare si imbogatire a datelor**
--  Adauga metadate pentru fiecare proxy folosind:
-  - **MaxMind MMDB** pentru geolocatie (tara, oras, ASN).
-  - **ASN-INFO.txt** pentru numele organizatiei.
--  **Datele sunt salvate in format JSON:**
+### **3. json_vorte.py – Data Processing and Enrichment**
+- Adds metadata for each proxy using:
+  - MaxMind MMDB for geolocation (country, city, ASN).
+  - ASN-INFO.txt for the organization name.
+- Data is stored in JSON format:
   ```json
   {
     "type": "SOCKS5",
@@ -65,57 +66,54 @@
   }
   ```
 
-### **4️ transfer_proxy.py – Transferul datelor**
--  Transfera fisierul JSON generat catre serverul **cPanel** pentru integrare in baza de date SQL.
--  Conexiune securizata prin **SSH Key Authentication**.
+### **4. transfer_proxy.py – Data Transfer**
+- Transfers the generated JSON file to the cPanel server for SQL database integration.
+- Secure connection via SSH Key Authentication.
 
 ---
 
-## ** Fluxul pe cPanel**
+## **cPanel Workflow**
 
-### **1️ Importarea datelor in SQL**
--  **Cron Job:**
+### **1. Importing Data into SQL**
+- **Cron Job:**
   ```sh
   curl -s https://vorte.eu/proxies/cached_proxies.php > /dev/null
   ```
--  **Functie:** Importa proxy-urile din JSON in baza de date SQL `proxies`.
+- **Function:** Imports proxies from JSON into the `proxies` SQL database.
 
-### **2️ Actualizare si selectie proxy random**
--  **Cron Job:**
+### **2. Proxy Update and Random Selection**
+- **Cron Job:**
   ```sh
   curl -s https://vorte.eu/proxies/update_proxies.php > /dev/null
   ```
--  **Functie:** Selecteaza aleatoriu **40 proxy-uri** la fiecare ora si le salveaza in `cached_proxies` pentru afisare.
+- **Function:** Selects 40 random proxies every hour and saves them in `cached_proxies` for display.
 
 ---
 
-## ** Functionalitati pentru Utilizatorii inregistrati**
-
- **Vizualizare lista completa de proxy-uri**
--  **Filtrare avansata** dupa tip, tara, oras, ASN, organizatie.
-
- **Descarcare gratuita a pana la 30 proxy-uri zilnic**
--  **Functie de shopping cart** pentru selectie si descarcare.
-
- **Acces la „My Proxy List”**
--  **Proxy-urile descarcate sunt afisate fara mascarea IP-urilor.**
+## **Features for Registered Users**
+- **View complete proxy list**
+- **Advanced filtering** by type, country, city, ASN, and organization.
+- **Free download of up to 30 proxies daily**
+  - Shopping cart functionality for selection and download.
+- **Access to "My Proxy List"**
+  - Downloaded proxies are displayed without IP masking.
 
 ---
 
-## ** Tehnologii Folosite**
+## **Technologies Used**
 - **Backend:** Python, Flask
-- **Automatizare:** Cron Jobs
-- **Securitate:** SSH Key Authentication
-- **Baze de date:** MySQL, JSON
-- **Geolocatie:** MaxMind MMDB
-- **Interfata utilizator:** HTML, CSS, JavaScript (in dashboard)
+- **Automation:** Cron Jobs
+- **Security:** SSH Key Authentication
+- **Databases:** MySQL, JSON
+- **Geolocation:** MaxMind MMDB
+- **User Interface:** HTML, CSS, JavaScript (dashboard)
 - **Hosting:** cPanel
 
 ---
 
-## ** Licenta & Drepturi**
-- **Proiect in dezvoltare activa** – Se vor adauga noi functionalitati.
-- **Acces public limitat** – Utilizatorii trebuie sa se inregistreze pentru a beneficia de toate functionalitatile.
+## **License & Rights**
+- **Project under active development** – New features will be added.
+- **Limited public access** – Users must register to access all functionalities.
 
- **Vorte Proxies nu este doar un simplu site, ci un sistem complet de gestionare automatizata a proxy-urilor!** 
+  **Vorte Proxies is not just a simple website but a complete automated proxy management system!**
 
