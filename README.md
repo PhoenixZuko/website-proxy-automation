@@ -1,3 +1,6 @@
+https://vorte.eu/proxies/
+https://youtu.be/yUpH542vcG0
+
 # Vorte Proxies - Automated Proxy Validation Platform
 
 Vorte Proxies is an innovative project that automates the management and validation of proxy lists. Using Python, Cron Jobs, SSH, and SQL databases, the platform allows users to access verified proxies and benefit from advanced administrative features.
