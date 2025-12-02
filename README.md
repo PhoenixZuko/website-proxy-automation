@@ -1,4 +1,6 @@
-https://vorte.eu/proxies/
+
+
+https://vorte.eu/portfolio
 https://youtu.be/yUpH542vcG0
 
 # Vorte Proxies - Automated Proxy Validation Platform
@@ -119,4 +121,5 @@ This script orchestrates the execution of other scripts, ensuring each has enoug
 - **Limited public access** – Users must register to access all functionalities.
 
   **Vorte Proxies is not just a simple website but a complete automated proxy management system!**
+
 
