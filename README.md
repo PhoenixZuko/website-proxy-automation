@@ -31,42 +31,55 @@ The automated pipeline:
 
 The full version of the platform includes a dashboard for browsing, filtering, and downloading proxies.
 
----
-
 ## 2. System Architecture
 
-                 ┌────────────────────────────┐
-                 │        Cron Scheduler       │
-                 │         (every 3 hours)     │
-                 └──────────────┬──────────────┘
-                                │  SSH
-                                ▼
-                       ┌─────────────────────┐
-                       │       main.py       │
-                       │    (orchestrator)   │
-                       └──────────┬──────────┘
-                                  │
-        ┌─────────────────────────┼───────────────────────────┐
-        │                         │                           │
-        ▼                         ▼                           ▼
- ┌──────────────┐        ┌────────────────┐          ┌───────────────────┐
- │ get_proxy.py │        │ check_proxy.py │          │ json_vorte.py     │
- │ downloads    │        │ validates       │          │ enriches with     │
- │ lists        │        │ proxies        │          │ GeoIP + ASN       │
- └──────────────┘        └────────────────┘          └───────────────────┘
+```
+                          +------------------------+
+                          |    Cron Scheduler      |
+                          |     (every 3 hours)    |
+                          +-----------+------------+
+                                      |
+                                     SSH
+                                      |
+                          +-----------v------------+
+                          |        main.py         |
+                          |     (orchestrator)     |
+                          +-----+---------+--------+
+                                |         |
+                                |         |
+     +--------------------------+         +-----------------------------+
+     |                                                            |
+     v                                                            v
++-------------+                                         +------------------+
+| get_proxy.py|                                         | json_vorte.py    |
+| downloads   |                                         | enriches w/      |
+| lists       |                                         | GeoIP + ASN      |
++-------------+                                         +------------------+
+           \                                               /
+            \                                             /
+             \                                           /
+              v                                         v
+                     +--------------------------------+
+                     |      check_proxy.py             |
+                     |      validates proxies          |
+                     +----------------+----------------+
+                                      |
+                                      v
+                     +--------------------------------+
+                     |    transfer_proxy.py (SSH)      |
+                     +----------------+----------------+
+                                      |
+                                      v
+     +-------------------------------------------------------------------+
+     |  cPanel Import → JSON → MySQL → Cached Rotation (40 proxies/hour) |
+     +-------------------------------------------------------------------+
+                                      |
+                                      v
+                         +----------------------------+
+                         |   User Dashboard (HTML/JS) |
+                         +----------------------------+
+```
 
-                                  │
-                                  ▼
-                       ┌──────────────────────┐
-                       │  transfer_proxy.py   │
-                       │      (SSH upload)    │
-                       └──────────┬───────────┘
-                                  │
-                                  ▼
-         cPanel Import → JSON → MySQL → Cached Rotation (40 proxies/hour)
-                                  │
-                                  ▼
-                        User Dashboard (HTML / JS)
 
 
 ## 3. Key Features
@@ -147,4 +160,5 @@ Commercial use or redistribution requires explicit permission.
 
 Vorte Proxies showcases a complete automated workflow for large-scale proxy processing:
 ETL automation, proxy validation, metadata enrichment, secure deployment, and a user-facing interface.
+
 
