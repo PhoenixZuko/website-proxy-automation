@@ -35,34 +35,39 @@ The full version of the platform includes a dashboard for browsing, filtering, a
 
 ## 2. System Architecture
 
-            ┌────────────────────────────┐
-            │       Cron Scheduler        │
-            │        (every 3 hours)      │
-            └─────────────┬──────────────┘
-                          SSH
-                           ▼
-                  ┌────────┴─────────┐
-                  │      main.py      │
-                  │   (orchestrator)  │
-                  └───────┬──────────┘
-                          │
-      ┌───────────────────┼─────────────────────────────┐
-      │                   │                             │
-      ▼                   ▼                             ▼
- get_proxy.py      check_proxy.py                json_vorte.py
- downloads lists    validates proxies           enriches w/ GeoIP + ASN
+                 ┌────────────────────────────┐
+                 │        Cron Scheduler       │
+                 │         (every 3 hours)     │
+                 └──────────────┬──────────────┘
+                                │  SSH
+                                ▼
+                       ┌─────────────────────┐
+                       │       main.py       │
+                       │    (orchestrator)   │
+                       └──────────┬──────────┘
+                                  │
+        ┌─────────────────────────┼───────────────────────────┐
+        │                         │                           │
+        ▼                         ▼                           ▼
+ ┌──────────────┐        ┌────────────────┐          ┌───────────────────┐
+ │ get_proxy.py │        │ check_proxy.py │          │ json_vorte.py     │
+ │ downloads    │        │ validates       │          │ enriches with     │
+ │ lists        │        │ proxies        │          │ GeoIP + ASN       │
+ └──────────────┘        └────────────────┘          └───────────────────┘
 
-                           │
-                           ▼
-                transfer_proxy.py (SSH upload)
-                           │
-                           ▼
-        cPanel Import → JSON → MySQL → Cached Rotation (40 proxies/hour)
-                           │
-                           ▼
-                 User Dashboard (HTML / JS)
+                                  │
+                                  ▼
+                       ┌──────────────────────┐
+                       │  transfer_proxy.py   │
+                       │      (SSH upload)    │
+                       └──────────┬───────────┘
+                                  │
+                                  ▼
+         cPanel Import → JSON → MySQL → Cached Rotation (40 proxies/hour)
+                                  │
+                                  ▼
+                        User Dashboard (HTML / JS)
 
----
 
 ## 3. Key Features
 
@@ -142,3 +147,4 @@ Commercial use or redistribution requires explicit permission.
 
 Vorte Proxies showcases a complete automated workflow for large-scale proxy processing:
 ETL automation, proxy validation, metadata enrichment, secure deployment, and a user-facing interface.
+
