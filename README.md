@@ -1,125 +1,144 @@
+# Vorte Proxies – Automated Proxy Validation & Management Platform
 
+Vorte Proxies is an automated system designed to collect, validate, enrich, and organize large volumes of proxies.
+The project demonstrates a complete ETL-style automation pipeline using Python, Cron Jobs, SSH orchestration,
+GeoIP enrichment, and MySQL integration.
 
-https://vorte.eu/portfolio
-https://youtu.be/yUpH542vcG0
-
-# Vorte Proxies - Automated Proxy Validation Platform
-
-Vorte Proxies is an innovative project that automates the management and validation of proxy lists. Using Python, Cron Jobs, SSH, and SQL databases, the platform allows users to access verified proxies and benefit from advanced administrative features.
-
-Live project: Vorte Proxies
+This repository serves as a technical presentation of the system architecture and workflow.
 
 ---
 
-## **Current Project Status**
-- **Partially functional** – Users can already create accounts and log in using the following test credentials:
-  
-  **Username:** test  
-  **Password:** 1  
-- Development is ongoing – New features are being added constantly to improve the platform.
+## Demo Video
+
+A presentation video created for clients, showing the internal workflow and the overall logic of the platform:
+
+Full Project Overview & Workflow:
+https://www.youtube.com/watch?v=r5iQPuOCLUc
 
 ---
 
-## **Automated Processing Workflow**
+## 1. Overview
 
-### **1. Initiation via Cron Jobs**
-- **Frequency:** Every 3 hours, a Cron Job starts the process.
-- **Executed command:**
-   ```sh
-   ssh root@87.120.114.174 "python3 /root/Bubu/main.py"
-   ```
-- **Secure authentication:** Uses SSH Key Authentication for password-less login.
+The automated pipeline:
 
-### **2. Main Script – main.py**
-This script orchestrates the execution of other scripts, ensuring each has enough time to complete:
+- downloads proxy lists from public sources  
+- validates connectivity through controlled network checks  
+- enriches each proxy with GeoIP (country, city) and ASN/ISP metadata  
+- generates structured JSON output  
+- transfers processed data securely via SSH  
+- imports everything into MySQL on the production server  
+- updates cached proxy sets automatically on a schedule  
 
-- **get_proxy.py** – 300 seconds (5 min)
-- **check_proxy.py** – 1800 seconds (30 min)
-- **json_vorte.py** – 300 seconds (5 min)
-- **transfer_proxy.py** – 300 seconds (5 min)
+The full version of the platform includes a dashboard for browsing, filtering, and downloading proxies.
 
 ---
 
-## **Proxy Validation Process**
+## 2. System Architecture
 
-### **1. get_proxy.py – Downloading Proxy Lists**
-- Retrieves lists from public sources and saves them locally.
-- Types of downloaded proxies:
-  - SOCKS5
-  - SOCKS4
-  - HTTP
-  - HTTPS
+            ┌────────────────────────────┐
+            │       Cron Scheduler        │
+            │        (every 3 hours)      │
+            └─────────────┬──────────────┘
+                          SSH
+                           ▼
+                  ┌────────┴─────────┐
+                  │      main.py      │
+                  │   (orchestrator)  │
+                  └───────┬──────────┘
+                          │
+      ┌───────────────────┼─────────────────────────────┐
+      │                   │                             │
+      ▼                   ▼                             ▼
+ get_proxy.py      check_proxy.py                json_vorte.py
+ downloads lists    validates proxies           enriches w/ GeoIP + ASN
 
-### **2. check_proxy.py – Proxy Validation**
-- Verifies the functionality of the downloaded proxies.
-- Ensures there are enough valid proxies available for testing.
-
-### **3. json_vorte.py – Data Processing and Enrichment**
-- Adds metadata for each proxy using:
-  - MaxMind MMDB for geolocation (country, city, ASN).
-  - ASN-INFO.txt for the organization name.
-- Data is stored in JSON format:
-  ```json
-  {
-    "type": "SOCKS5",
-    "country": "South Korea",
-    "city": "Seoul",
-    "ip": "8.213.129.15",
-    "port": "9992",
-    "asn": "45102",
-    "organization": "Alibaba US Technology"
-  }
-  ```
-
-### **4. transfer_proxy.py – Data Transfer**
-- Transfers the generated JSON file to the cPanel server for SQL database integration.
-- Secure connection via SSH Key Authentication.
+                           │
+                           ▼
+                transfer_proxy.py (SSH upload)
+                           │
+                           ▼
+        cPanel Import → JSON → MySQL → Cached Rotation (40 proxies/hour)
+                           │
+                           ▼
+                 User Dashboard (HTML / JS)
 
 ---
 
-## **cPanel Workflow**
+## 3. Key Features
 
-### **1. Importing Data into SQL**
-- **Cron Job:**
-  ```sh
-  curl -s https://vorte.eu/proxies/cached_proxies.php > /dev/null
-  ```
-- **Function:** Imports proxies from JSON into the `proxies` SQL database.
+### Automated Backend Pipeline
+- Scheduled proxy acquisition  
+- Supports SOCKS5 / SOCKS4 / HTTP / HTTPS  
+- Real-time validation with timeout  
+- GeoIP enrichment (MaxMind MMDB)  
+- ASN + organization lookup  
+- JSON ETL generation  
+- Secure SSH-based deployment  
 
-### **2. Proxy Update and Random Selection**
-- **Cron Job:**
-  ```sh
-  curl -s https://vorte.eu/proxies/update_proxies.php > /dev/null
-  ```
-- **Function:** Selects 40 random proxies every hour and saves them in `cached_proxies` for display.
+### User Platform (Full Version)
+- Account system  
+- Proxy browser with filters  
+- Daily download quota  
+- Selection-based export  
+- “My Proxy List” view  
 
----
-
-## **Features for Registered Users**
-- **View complete proxy list**
-- **Advanced filtering** by type, country, city, ASN, and organization.
-- **Free download of up to 30 proxies daily**
-  - Shopping cart functionality for selection and download.
-- **Access to "My Proxy List"**
-  - Downloaded proxies are displayed without IP masking.
+### Security
+- SSH key authentication  
+- Isolated automation pipeline  
+- Protected SQL import/update endpoints  
 
 ---
 
-## **Technologies Used**
-- **Backend:** Python, Flask
-- **Automation:** Cron Jobs
-- **Security:** SSH Key Authentication
-- **Databases:** MySQL, JSON
-- **Geolocation:** MaxMind MMDB
-- **User Interface:** HTML, CSS, JavaScript (dashboard)
-- **Hosting:** cPanel
+## 4. Technology Stack
+
+Backend & Automation:
+- Python 3  
+- Cron Jobs  
+- Flask  
+- SSH automation  
+- MaxMind GeoIP2  
+- JSON ETL pipeline  
+
+Database:
+- MySQL  
+
+Frontend:
+- HTML / CSS / JavaScript  
+
+Hosting:
+- cPanel  
 
 ---
 
-## **License & Rights**
-- **Project under active development** – New features will be added.
-- **Limited public access** – Users must register to access all functionalities.
+## 5. Example Output
 
-  **Vorte Proxies is not just a simple website but a complete automated proxy management system!**
+{
+  "type": "SOCKS5",
+  "country": "South Korea",
+  "city": "Seoul",
+  "ip": "8.213.129.15",
+  "port": "9992",
+  "asn": "45102",
+  "organization": "Alibaba US Technology"
+}
 
+---
 
+## 6. Project Status
+
+This repository represents a functional demonstration of the Vorte Proxies automation pipeline.
+Development is ongoing, and additional features will be added in future versions.
+
+---
+
+## 7. License
+
+This project is provided for technical demonstration purposes only.
+Commercial use or redistribution requires explicit permission.
+
+---
+
+## 8. Summary
+
+Vorte Proxies showcases a complete automated workflow for large-scale proxy processing:
+ETL automation, proxy validation, metadata enrichment, secure deployment, and a user-facing interface.
